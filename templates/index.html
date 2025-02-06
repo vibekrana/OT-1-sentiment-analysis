@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Sentiment Analysis</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .predict-btn {
+            background: #1f1f1f;
+            color: #00e676;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.5);
+        }
+
+        .predict-btn:hover {
+            background: #00e676;
+            color: #121212;
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 230, 118, 0.8);
+        }
+
+        .background-anim {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,230,118,0.1) 10%, transparent 20%);
+            background-size: 50px 50px;
+            animation: pulse 5s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100px 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-anim"></div>
+        <button class="predict-btn" onclick="predictSentiment()">Predict Sentiment</button>
+    </div>
+
+    <script>
+        function predictSentiment() {
+            alert("Sentiment prediction feature coming soon!");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0f1f, #1a1a2f);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(30, 30, 30, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      background: #252525;
+      color: #ffffff;
+      border: 1px solid #444;
+      padding: 10px 15px;
+      border-radius: 8px;
+      outline: none;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #00adb5;
+      box-shadow: 0 0 10px rgba(0, 173, 181, 0.6);
+    }
+
+    button {
+      background: linear-gradient(145deg, #3b82f6, #2563eb);
+      color: #ffffff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 173, 181, 0.3);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(145deg, #2563eb, #1e40af);
+      box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+    }
+
+    button:hover::before {
+      opacity: 1;
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(0, 173, 181, 0.8);
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Floating background elements */
+    .floating-element {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: float 6s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sentiment Prediction</h1>
+    <form action="/predict" method="POST">
+      <label name="message">Enter your message:</label>
+      <input type="text" id="message" name="message" placeholder="Type something..." required>
+      <button type="submit">Know Sentiment →</button>
+    </form>
+    <!-- Floating Elements -->
+    <div class="floating-element" style="width: 300px; height: 300px; top: 20%; left: 10%; background: rgba(59, 130, 246, 0.1);"></div>
+    <div class="floating-element" style="width: 200px; height: 200px; top: 60%; right: 15%; background: rgba(255, 255, 255, 0.05);"></div>
+  </div>
+</body>
+</html>

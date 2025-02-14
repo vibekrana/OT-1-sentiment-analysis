@@ -5,29 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Financial Sentiment Analysis</title>
   <style>
-    /* Reset Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
-    /* Body & Background */
     body {
-      background-color: #121212;
+      background: linear-gradient(to right, #141E30, #243B55);
       color: #ffffff;
       overflow: hidden;
-      position: relative;
     }
 
-    /* Navbar Styles */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 50px;
-      background-color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       position: fixed;
       top: 0;
@@ -36,81 +33,71 @@
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
-      color: #121212;
+      color: #00d4ff;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
-    }
-
-    nav ul li {
-      display: inline;
+      gap: 25px;
     }
 
     nav ul li a {
       text-decoration: none;
-      color: #121212;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      color: #ffffff;
+      font-size: 18px;
+      transition: 0.3s;
     }
 
     nav ul li a:hover {
-      color: #007bff;
+      color: #00d4ff;
     }
 
-    /* Main Content */
     .main-content {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
-      flex-direction: column;
-    }
-
-    .main-content h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .main-content p {
-      font-size: 18px;
-      opacity: 0.8;
-      margin-bottom: 30px;
       animation: fadeIn 1.5s ease-in-out;
     }
 
-    /* Predict Button */
+    .main-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00d4ff, #007bff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .main-content p {
+      font-size: 20px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
     .predict-button {
-      padding: 15px 40px;
-      font-size: 18px;
+      padding: 15px 45px;
+      font-size: 20px;
       font-weight: bold;
       color: #ffffff;
       background: linear-gradient(135deg, #007bff, #00d4ff);
       border: none;
-      border-radius: 50px;
+      border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
-      animation: fadeIn 2s ease-in-out;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
     }
 
     .predict-button:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+      box-shadow: 0 0 25px rgba(0, 123, 255, 0.8);
     }
 
-    .predict-button:active {
-      transform: scale(0.95);
-    }
-
-    /* Moving Stars Background */
     .stars {
       position: absolute;
       width: 100%;
@@ -123,8 +110,8 @@
 
     .star {
       position: absolute;
-      width: 3px;
-      height: 3px;
+      width: 4px;
+      height: 4px;
       background: white;
       border-radius: 50%;
       opacity: 0.8;
@@ -142,7 +129,6 @@
       }
     }
 
-    /* Fade In Animation */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -156,21 +142,16 @@
   </style>
 </head>
 <body>
-
-  <!-- Background Stars -->
   <div class="stars" id="stars"></div>
-
-  <!-- Navbar -->
   <nav>
     <div class="logo">Financial Sentiment Analysis</div>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Analysis</a></li>
-      <li><a href="#">About Us</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/predict">Analysis</a></li>
+      <li><a href="/about">About Us</a></li>
     </ul>
   </nav>
 
-  <!-- Main Content -->
   <div class="main-content">
     <h1>Financial Sentiment Analysis</h1>
     <p>Analyze market trends and news sentiment in real-time.</p>
@@ -178,15 +159,13 @@
   </div>
 
   <script>
-    // Predict Sentiment Button Click - Redirects to /predict page
     function predictSentiment() {
       window.location.href = "/predict";
     }
 
-    // Create Moving Stars Animation
     function createStars() {
       const starContainer = document.getElementById('stars');
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 80; i++) {
         let star = document.createElement("div");
         star.className = "star";
         star.style.left = Math.random() * window.innerWidth + "px";
@@ -197,6 +176,5 @@
     }
     createStars();
   </script>
-
 </body>
 </html>

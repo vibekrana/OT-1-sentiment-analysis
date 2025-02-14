@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from test import TextToNum 
+from test import TextToNum
 import pickle
 app = Flask(__name__)
 @app.route("/")
@@ -19,17 +19,21 @@ def predict():
         stvc = " ".join(st)
         with open("vectorizer.pickle","rb") as vc_file:
             vectorizer = pickle.load(vc_file)
-        dt =  vectorizer.transform([stvc]).toarray()
+        dt = vectorizer.transform([stvc])
         with open("model.pickle","rb") as mb_file:
             model = pickle.load(mb_file)
-        pred = model.predict(dt)
-        print(pred)
-        return jsonify({"prediction":str(pred[0])})
+        pred =  model.predict(dt)
+        if pred[0]==1:
+            pred = "Positive"
+        elif pred[0]==0:
+            pred = "Neutral"
+        else:
+            pred = "Negative"
+        # prediction = str(pred[0])  # Convert prediction to string
+        
+        return render_template("result.html", prediction=pred)
 
+    return render_template("predict.html")
 
- 
-    else:
-        return render_template("predict.html")    
- 
-if __name__== "__main__":
-    app.run(host="0.0.0.0",port=5050)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",port=5151)
